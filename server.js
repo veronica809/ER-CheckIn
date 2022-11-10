@@ -7,8 +7,10 @@ const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send(`Hello World! to http://localhost:${port}${req.url}`);
+  res.send(`Hello World!`);
 });
+
+app.use(routes);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
