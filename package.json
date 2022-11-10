@@ -6,7 +6,8 @@
   "scripts": {
     "test": "eslint",
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "seed": "nodemon seeds/index.js"
   },
   "keywords": [],
   "author": "",
