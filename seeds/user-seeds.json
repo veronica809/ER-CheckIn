@@ -1,18 +1,30 @@
 [
 {   
   "username": "peterquill",
-  "password": "starlord"
+  "password": "starlord",
+  "profile": "doctor",
+  "firstname": "Peter",
+  "lastname": "quill"
 },
 {
   "username": "blackwidow",
-  "password": "coollandngs"
+  "password": "coollandngs",
+  "profile": "doctor",
+  "firstname": "Natasha",
+  "lastname": "Romanov"
 },
 {
   "username": "thor",
-  "password": "thundergod"
+  "password": "thundergod",
+  "profile": "nurse",
+  "firstname": "Chris",
+  "lastname": "Hemsworth"
 },
 {
   "username": "ChrisEvans",
-  "password": "captainamerica"
+  "password": "captainamerica",
+  "profile": "nurse",
+  "firstname": "Steve",
+  "lastname": "Rogers"
 }
 ]
