@@ -20,6 +20,23 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    profile: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "patient",
+    },
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    dob: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
@@ -30,4 +47,4 @@ User.init(
   }
 );
 
-module.exports = "User";
+module.exports = User;
