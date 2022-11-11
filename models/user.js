@@ -23,11 +23,11 @@ User.init(
   },
   {
     sequelize,
-    modelName: "user",
+    modelName: "User",
     freezeTableName: true,
     timestamps: true,
     underscored: true,
   }
 );
 
-module.exports = "user";
+module.exports = "User";
