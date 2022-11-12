@@ -1,7 +1,42 @@
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
-exports.addPatient = async (req, res) => {
+exports.logout = async (req, res) => {
   try {
-    const { username, password, profile, firtname, lastname, dob } = req.body;
-  } catch (error) {}
+    req.session.destroy();
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+exports.getUsersByProfileName = async (req, res) => {
+  try {
+    const results = await User.findAll({
+      where: { profile: req.params.profile },
+      attributes: [
+        "id",
+        "username",
+        "firstname",
+        "lastname",
+        "dob",
+        "createdAt",
+        "updatedAt",
+      ],
+    });
+    res.json(results);
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+exports.logIn = async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ where: { username } });
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (validPassword) {
+    //login user
+  } else {
+    res.status(400).json({ message: "Invalid password" });
+  }
 };
