@@ -32,6 +32,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
+app.get("*", (req, res) => {
+  res.status(404).send("page not found");
+});
+
 sequelize
   .sync({ force: false })
   .then(() => {
