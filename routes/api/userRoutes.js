@@ -49,9 +49,13 @@ router.post("/login", async (req, res) => {
     const loginResult = await logIn(req, res);
 
     //add user info to the sessionun
-    req.session.password = user.dataValues.password;
-    req.session.loggedIn = true;
-    res.status(201).json({ message: "Successful login" });
+    if (loginResult) {
+      req.session.password = user.dataValues.password;
+      req.session.loggedIn = true;
+      res.status(201).json({ message: "Successful login" });
+    } else {
+      res.status(401).json({ message: "Invalid login" });
+    }
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: "Internal server error" });

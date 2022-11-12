@@ -1,18 +1,28 @@
 const express = require("express");
 const session = require("express-session");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const cookieParser = require("cookie-parser");
 const sequelize = require("./config/connection");
 const path = require("path");
 const routes = require("./routes");
+const { strict } = require("assert");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const sess = {
   secret: process.env.SESSION_SECRET,
-  cookie: {},
+  cookie: {
+    maxAge: 5 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+    secure: false,
+    sameSite: "strict",
+  },
   resave: false,
   saveUninitialize: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
 };
 app.use(cookieParser());
 app.use(session(sess));
