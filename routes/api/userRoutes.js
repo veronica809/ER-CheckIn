@@ -2,10 +2,11 @@ const router = require("express").Router();
 const { response } = require("express");
 const { getUsersByProfileName } = require("../../controllers/users");
 const { logIn } = require("../../controllers/users");
-const User = require("../../models/User");
+const { User } = require("../../models");
 
 //POST/apiUsers - makes a new user
 router.post("/", async (req, res) => {
+  console.log(req.body);
   try {
     //get user data from the req.body
     const { username, password, profile, firstname, lastname, dob } = req.body;
@@ -32,7 +33,7 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     //get user data from the req.body
-    const { username, password, profile, firstname, lastname, dob } = req.body;
+    const { username, password } = req.body;
     //create a new user
     const user = await User.findOne({
       where: {
@@ -50,7 +51,7 @@ router.post("/login", async (req, res) => {
 
     //add user info to the sessionun
     if (loginResult) {
-      req.session.password = user.dataValues.password;
+      req.session.userId = user.dataValues.id;
       req.session.loggedIn = true;
       res.status(201).json({ message: "Successful login" });
     } else {

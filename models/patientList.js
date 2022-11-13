@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Todo extends Model {}
+class Patientlist extends Model {}
 
-Todo.init(
+Patientlist.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,22 +19,22 @@ Todo.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-        onDelete: "cascade",
-      },
-    },
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "user",
+    //     key: "id",
+    //     onDelete: "cascade",
+    //   },
+    // },
   },
   {
     sequelize,
-    modelName: "todo",
+    modelName: "patient list",
     freezeTableName: true,
     timestamps: true,
     underscored: true,
   }
 );
 
-module.exports = Todo;
+module.exports = Patientlist;

@@ -1,0 +1,32 @@
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="/users/logout">Logout</a></li>
+</ul>
+
+<nav>
+  <div class="nav-wrapper teal lighten-2 heading">
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <a href="/ercheckin" class="brand-logo some-left-margin">ER Check in </a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      {{#if user}}
+      <li><a href="/myrecipes">ER Check in</a></li>
+
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Welcome {{user.firstName}}<i
+            class="material-icons right">arrow_drop_down</i></a></li>
+      {{else}}
+      <li><a href="/users/login">Login</a></li>
+      <li><a href="/users/register">Register</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+  {{#if user}}
+  <li><a href="/myrecipes">My Recipes</a></li>
+  <li class="divider"></li>
+  <li><a href="/users/logout">Logout</a></li>
+  {{else}}
+  <li><a href="/users/login">Login</a></li>
+  <li><a href="/users/register">Register</a></li>
+  {{/if}}
+</ul>

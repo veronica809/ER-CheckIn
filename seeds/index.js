@@ -1,7 +1,7 @@
 const sequelize = require("../config/connection");
-const { User, Todo } = require("../models");
+const { User, Patientlist } = require("../models");
 const userSeeds = require("./user-seeds.json");
-const todoSeeds = require("./toDo.json");
+const patientList = require("./patientList.json");
 
 const seedUsers = async () => {
   await sequelize.sync({ force: true });

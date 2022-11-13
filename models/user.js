@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
+const Patientlist = require("./patientList");
 
 class User extends Model {
   checkPassword(loginPassword) {
@@ -62,5 +63,13 @@ User.init(
     underscored: true,
   }
 );
+
+// User.hasMany(Todo, {
+//   as: "todos",
+// });
+// Todo.belongsTo(User, {
+//   foreignKey: "user_id",
+//   as: "user",
+// });
 
 module.exports = User;

@@ -6,6 +6,7 @@ const sequelize = require("./config/connection");
 const path = require("path");
 const routes = require("./routes");
 const { strict } = require("assert");
+const { engine } = require("express-handlebars");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,7 +29,13 @@ app.use(cookieParser());
 app.use(session(sess));
 
 app.use(express.json());
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+
+// Handlebars
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", "./views");
 
 app.use(routes);
 
