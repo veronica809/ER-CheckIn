@@ -1,27 +1,22 @@
-[{
-  "title": "buy milk",
-  "complete": false
-},
+[ 
 {
-  "title": "work out",
-  "co
-  
-  
-  
-  
-  
-  mplete": false
-},
-{
-  "title": "get gas",
-  "complete": false
-},
-{
-  "title": "doctor appointment",
-  "complete": false
-},
-{
-  "title": "code",
-  "complete": false
+"firstname": "Buba",
+"lastname": "smith",
+"dob": "10/10/1980",
+"title": "????",
+"symptoms": "cough, fever",
+"symptomsstartdate": "11/05/2022",
+"shortbreath": "false",
+"chestpain": "false",
+"triaged": "false",
+"covidexposed": "false",
+"influenzaexposed": "false",
+"tuberculosisexposed": "false",
+"nursenotes": "vitals please",
+"diagnosis": "pending"
 }
 ]
+  
+  
+  
+  

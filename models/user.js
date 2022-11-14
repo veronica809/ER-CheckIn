@@ -64,12 +64,4 @@ User.init(
   }
 );
 
-// User.hasMany(Todo, {
-//   as: "todos",
-// });
-// Todo.belongsTo(User, {
-//   foreignKey: "user_id",
-//   as: "user",
-// });
-
 module.exports = User;

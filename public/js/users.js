@@ -15,7 +15,7 @@ $("#register-user").on("submit", function (event) {
 
   console.log(newUser);
 
-  // Do some validation to make sure the password lenght is at least 4 characters:
+  // Do some validation to make sure the password lengh is at least 4 characters:
 
   if (newUser.password === newUser.password2 && newUser.password.length > 6) {
     console.log("success");

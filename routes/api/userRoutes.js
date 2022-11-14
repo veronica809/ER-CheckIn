@@ -31,6 +31,7 @@ router.post("/", async (req, res) => {
 
 //POST/api/Users - logs user in
 router.post("/login", async (req, res) => {
+  console.log(req.body);
   try {
     //get user data from the req.body
     const { username, password } = req.body;

@@ -5,7 +5,7 @@ const userRoutes = require("./userRoutes");
 const patientList = require("./patientListRoute");
 
 router.use("/users", userRoutes);
-router.use("/todos", checkAuth, patientList);
+router.use("/patientlist", checkAuth, patientList);
 
 router.get("/logout", logout);
 

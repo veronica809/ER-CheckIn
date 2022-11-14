@@ -12,9 +12,10 @@ router.get("/register", (req, res) => {
   res.render("registerUser");
 });
 router.get("/newpatient", (req, res) => {
-  res.render("newpatient");
+  res.render("patientQuestions");
 });
 router.get("/existingpatient", (req, res) => {
   res.render("existingpatient");
 });
+
 module.exports = router;

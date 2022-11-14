@@ -4,16 +4,16 @@ const userSeeds = require("./user-seeds.json");
 const patientList = require("./patientList.json");
 
 const seedUsers = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
 
   const users = await User.bulkCreate(userSeeds, {
     individualHooks: true,
     returning: true,
   });
 
-  for (let todo of todoSeeds) {
-    await Todo.create({
-      ...todo,
+  for (let patientlist of patientList) {
+    await Patientlist.create({
+      ...patientlist,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }

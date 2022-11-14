@@ -6,19 +6,19 @@ const router = require("express").Router();
 // get all patients
 router.get("/", async (req, res) => {
   try {
-    const todos = await Todo.findAll({});
-    res.status(200).json(todos);
+    const patientlist = await Patientlist.findAll({});
+    res.status(200).json(patientlist);
   } catch (err) {
     res.status(400).json({ err, message: "Not found" });
   }
 });
 
 // get patient by id
-router.get("/:todoId", async (req, res) => {
+router.get("/:patientlistId", async (req, res) => {
   try {
-    const todo = await Todo.findOne({
+    const patientlist = await Patientlist.findOne({
       where: {
-        id: req.params.todoId,
+        id: req.params.patientlistId,
       },
       include: {
         model: User,
@@ -40,7 +40,7 @@ router.get("/:todoId", async (req, res) => {
         message: "Patient not found",
       });
     }
-    res.status(200).json(todo);
+    res.status(200).json(patientList);
   } catch (err) {
     console.log(err.message);
     res.status(500).json({
@@ -49,7 +49,7 @@ router.get("/:todoId", async (req, res) => {
   }
 });
 
-//post new todo
+//post new patient check in
 router.post("/", async (req, res) => {
   console.log(req);
   try {
@@ -66,5 +66,10 @@ router.post("/", async (req, res) => {
 //put todo by id
 
 //delete todo by id
+
+router.post("/patientquestions", (req, res) => {
+  console.log(req.body);
+  res.json({ redirectRoute: "/patientquestions" });
+});
 
 module.exports = router;
