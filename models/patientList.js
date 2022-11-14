@@ -21,27 +21,27 @@ Patientlist.init(
     },
     dob: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     symptoms: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     symptomsstartdate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     shortbreath: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      defaultValue: true,
     },
     chestpain: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      defaultValue: true,
     },
     triaged: {
       type: DataTypes.BOOLEAN,
@@ -61,9 +61,11 @@ Patientlist.init(
     },
     nursenotes: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     diagnosis: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     complete: {
       type: DataTypes.BOOLEAN,
@@ -75,6 +77,7 @@ Patientlist.init(
     },
     dischargeddate: {
       type: DataTypes.DATE,
+      allowNull: true,
     },
   },
   {

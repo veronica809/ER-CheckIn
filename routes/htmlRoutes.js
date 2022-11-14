@@ -17,5 +17,8 @@ router.get("/newpatient", (req, res) => {
 router.get("/existingpatient", (req, res) => {
   res.render("existingpatient");
 });
+router.get("/patientQueue", (req, res) => {
+  res.render("patientQueue");
+});
 
 module.exports = router;

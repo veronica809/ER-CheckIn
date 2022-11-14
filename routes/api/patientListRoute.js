@@ -51,13 +51,15 @@ router.get("/:patientlistId", async (req, res) => {
 
 //post new patient check in
 router.post("/", async (req, res) => {
-  console.log(req);
+  console.log("reaching the backend route");
+  console.log(req.body);
   try {
     await Patientlist.create({
       ...req.body,
       user_id: req.session.userId,
     });
-    res.status(201).json({ message: "Todo Created" });
+    // res.status(201).json({ message: "Patient added to list" });
+    res.redirect("/newpatient");
   } catch (err) {
     res.status(500).json(err);
   }
