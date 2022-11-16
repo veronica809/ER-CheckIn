@@ -20,8 +20,10 @@ router.post("/", async (req, res) => {
       dob,
     });
     //add user info to the session
-    req.session.userId = user.dataValues.id;
-    req.session.loggedIn = true;
+    req.session.save(() => {
+      req.session.userId = user.dataValues.id;
+      req.session.loggedIn = true;
+    });
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     console.log(error.message);
@@ -54,7 +56,8 @@ router.post("/login", async (req, res) => {
     if (loginResult) {
       req.session.userId = user.dataValues.id;
       req.session.loggedIn = true;
-      res.status(201).json({ message: "Successful login" });
+      // res.status(201).json({ message: "Successful login" });
+      res.redirect("/patientqueue");
     } else {
       res.status(401).json({ message: "Invalid login" });
     }

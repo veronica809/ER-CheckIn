@@ -49,13 +49,55 @@ router.get("/:patientlistId", async (req, res) => {
   }
 });
 
+router.get("/patient/:patientlistId", async (req, res) => {
+  try {
+    console.log("reaching the route");
+    console.log(req.params);
+    const patientlist = await Patientlist.findOne({
+      where: {
+        id: req.params.patientlistId,
+      },
+    });
+
+    if (!patientlist) {
+      return res.status(404).json({
+        message: "Patient not found",
+      });
+    }
+    console.log(patientlist.dataValues);
+    res.render("patientview", patientlist.dataValues);
+    // res.status(200).json(patientlist);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+});
+
 //post new patient check in
 router.post("/", async (req, res) => {
+  var isolation = false;
+  if (
+    req.body.covidexposed ||
+    req.body.influenzaexposed ||
+    req.body.tuberculosisexposed
+  ) {
+    isolation = true;
+    console.log("it's working");
+  }
+  var urgent = false;
+  if (req.body.chestpain || req.body.shortbreath) {
+    urgent = true;
+  }
+
   console.log("reaching the backend route");
   console.log(req.body);
   try {
     await Patientlist.create({
       ...req.body,
+      urgent: urgent,
+      isolationrequired: isolation,
       user_id: req.session.userId,
     });
     // res.status(201).json({ message: "Patient added to list" });
@@ -68,10 +110,5 @@ router.post("/", async (req, res) => {
 //put todo by id
 
 //delete todo by id
-
-router.post("/patientquestions", (req, res) => {
-  console.log(req.body);
-  res.json({ redirectRoute: "/patientquestions" });
-});
 
 module.exports = router;

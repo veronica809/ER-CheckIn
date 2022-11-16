@@ -1,0 +1,25 @@
+
+   {{> navbar}}
+
+<div class= "container">
+   <h1 id = "test"> </h1>
+   {{#each patientlist}}
+      <ul class="collection">
+         <li class="collection-item avatar">
+            {{#if dataValues.isolationrequired}}
+            <img src="/images/mask.png" alt="" class="circle">
+            {{else}}
+               <img src="/images/clipboard.png" alt="" class="circle">
+            {{/if}}
+            <span class="title">Name: {{this.dataValues.firstname}} {{this.dataValues.lastname}}</span>
+            <p>Symptoms: {{this.dataValues.symptoms}} <br>
+               created_at: {{this.dataValues.createdAt}}
+            </p>
+            {{#if dataValues.urgent}}
+               <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            {{/if}}
+
+      </ul>
+   {{/each}}
+</div>
+<script src = "/js/patientQueue.js"></script>

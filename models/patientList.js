@@ -23,10 +23,6 @@ Patientlist.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     symptoms: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -37,11 +33,15 @@ Patientlist.init(
     },
     shortbreath: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true,
+      defaultValue: false,
     },
     chestpain: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true,
+      defaultValue: false,
+    },
+    urgent: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     triaged: {
       type: DataTypes.BOOLEAN,
@@ -56,6 +56,10 @@ Patientlist.init(
       defaultValue: false,
     },
     tuberculosisexposed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    isolationrequired: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },

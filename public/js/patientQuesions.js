@@ -16,7 +16,6 @@ function handleSubmit(event) {
     firstname: $("#first_name").val().trim(),
     lastname: $("#last_name").val().trim(),
     dob: $("#date-of-birth").val().trim(),
-    title: "????",
     symptoms: $("#symptoms").val().trim(),
     symptomsstartdate: $("#date-of-symptoms").val().trim(),
     covidexposed: covid,
@@ -41,13 +40,38 @@ function checkboxFunction(event) {
   console.log(event.target.id);
   if (event.target.id === "covid") {
     covid = event.target.checked;
+    if (covid === "false") {
+      covid = false;
+    } else {
+      covid = true;
+    }
   } else if (event.target.id === "tuberculosis") {
     tuberculosis = event.target.checked;
+    if (tuberculosis === "false") {
+      tuberculosis = false;
+    } else {
+      tuberculosis = true;
+    }
   } else if (event.target.id === "chestpain") {
     chestpain = event.target.checked;
+    if (chestpain === "false") {
+      chestpain = false;
+    } else {
+      chestpain = true;
+    }
   } else if (event.target.id === "influenza") {
     influenza = event.target.checked;
+    if (influenza === "false") {
+      influenza = false;
+    } else {
+      influenza = true;
+    }
   } else if (event.target.id === "breath") {
     shortbreath = event.target.checked;
+    if (breath === "false") {
+      breath = false;
+    } else {
+      breath = true;
+    }
   }
 }
