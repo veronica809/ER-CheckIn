@@ -29,5 +29,30 @@ router.get("/patientqueue", async (req, res) => {
     res.status(400).json({ err, message: "Not found" });
   }
 });
+router.get("/patientqueue/:patientlistId", async (req, res) => {
+  try {
+    console.log("reaching the route");
+    console.log(req.params);
+    const patientlist = await Patientlist.findOne({
+      where: {
+        id: req.params.patientlistId,
+      },
+    });
+
+    if (!patientlist) {
+      return res.status(404).json({
+        message: "Patient not found",
+      });
+    }
+    console.log(patientlist.dataValues);
+    res.render("patientview", patientlist.dataValues);
+    // res.status(200).json(patientlist);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+});
 
 module.exports = router;

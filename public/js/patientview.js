@@ -1,3 +1,7 @@
 $(document).ready(function () {
-  M.updateTextFields();
+  $(".backButton").click((event) => backButton());
 });
+
+function backButton() {
+  window.location.replace("/patientqueue/");
+}

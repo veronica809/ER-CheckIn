@@ -21,8 +21,8 @@ router.post("/", async (req, res) => {
     });
     //add user info to the session
     req.session.save(() => {
-      req.session.userId = user.dataValues.id;
-      req.session.loggedIn = true;
+      // req.session.username = user.dataValues.username;
+      req.session.logIn = true;
     });
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
