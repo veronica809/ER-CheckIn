@@ -27,25 +27,57 @@
     </ul>
 
 
-    <div class="row">
-        <div class="input-field col s6">
-        <input value={{nursenotes}} id="first_name2" type="text" class="validate">
-        <label class="active" for="first_name2">Nurse Notes:</label>
+  {{#if nursenotes}}
+    <h5>Nurse Notes:</h5>
+
+    {{#if nurseNoteEdit}}
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s11">
+              <i class="material-icons prefix">mode_edit</i>
+              <textarea id="new_nurse_note" class="materialize-textarea">{{nursenotes}}</textarea>
+              <label for="new_nurse_note">Nurse Notes:</label>
+            </div>
+            <div class = "col s1">
+              <a class="btn-floating btn-large waves-effect waves-light nursenotesNormalbtn ##607d8b blue-grey" id={{id}}><i class="material-icons">save</i></a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {{else}}
+        <div class="row">
+          <div class="col s11">
+            <p>{{nursenotes}}</p>
+          </div>
+          <div class="col s1">
+            {{!-- <i class="material-icons hoverable">edit</i> --}}
+            <a class="btn-floating btn-large waves-effect waves-light nursenotesbtn ##607d8b blue-grey" id={{id}}><i class="material-icons">edit</i></a>
+          </div>
         </div>
-    </div>
+         
+      {{/if}}
 
+  {{else}}
+    <h5>Add a Note:</h5>
 
-  <div class="row">
+    <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s11">
           <i class="material-icons prefix">mode_edit</i>
-          <textarea id="icon_prefix2" class="materialize-textarea" value="test"></textarea>
-          <label for="icon_prefix2" value="test">Nurse Notes:</label>
+          <textarea id="new_nurse_note" class="materialize-textarea">{{nursenotes}}</textarea>
+          <label for="new_nurse_note">Add a New Note:</label>
+        </div>
+        <div class = "col s1">
+          <a class="btn-floating btn-large waves-effect waves-light nursenotesNormalbtn red" id={{id}}><i class="material-icons">add</i></a>
         </div>
       </div>
     </form>
   </div>
+  {{/if}}
+
 
 </div>
 

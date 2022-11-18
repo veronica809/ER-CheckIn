@@ -25,15 +25,13 @@ function handleSubmit(event) {
     chestpain: chestpain,
   };
   console.log(patientAnswers);
-  $.ajax("api/patientlist", {
-    type: "POST",
-    data: patientAnswers,
-  })
-    .done(function (data) {
-      //just log the received data for now
-      $("body").replaceWith(data);
+
+  axios
+    .post("/api/patientlist", patientAnswers)
+    .then((res) => {
+      window.location.replace("/newpatient/");
     })
-    .fail((err) => console.log(err));
+    .catch((err) => console.log(err));
 }
 
 function checkboxFunction(event) {

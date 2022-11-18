@@ -97,11 +97,57 @@ router.post("/", async (req, res) => {
     await Patientlist.create({
       ...req.body,
       urgent: urgent,
+      nursenotes: "Not Documented",
       isolationrequired: isolation,
       user_id: req.session.userId,
     });
+    console.log("it is responding");
     // res.status(201).json({ message: "Patient added to list" });
     res.redirect("/newpatient");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+router.post("/nursenoteedit", async (req, res) => {
+  console.log("the edit request is coming as:");
+  console.log(req.body);
+  try {
+    if (req.body.edit === "true") {
+      await Patientlist.update(
+        {
+          nursenotes: req.body.newNurseNote,
+          nurseNoteEdit: false,
+        },
+        {
+          where: {
+            id: req.body.id,
+          },
+        }
+      ).then(function () {
+        res.status(200).send("OK");
+      });
+    } else {
+      await Patientlist.update(
+        {
+          nurseNoteEdit: true,
+        },
+        {
+          where: {
+            id: req.body.id,
+          },
+        }
+      ).then(function () {
+        res.status(200).send("OK");
+      });
+    }
+    // await Patientlist.create({
+    //   ...req.body,
+    //   urgent: urgent,
+    //   isolationrequired: isolation,
+    //   user_id: req.session.userId,
+    // });
+    // res.status(201).json({ message: "Patient added to list" });
+    // res.redirect("/newpatient");
   } catch (err) {
     res.status(500).json(err);
   }

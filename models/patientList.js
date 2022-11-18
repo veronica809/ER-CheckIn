@@ -67,6 +67,10 @@ Patientlist.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    nurseNoteEdit: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     diagnosis: {
       type: DataTypes.STRING,
       allowNull: true,
