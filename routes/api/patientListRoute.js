@@ -1,9 +1,11 @@
 const { Patientlist } = require("../../models");
 const { User } = require("../../models");
-
+const { checkAuth } = require("../../middlewares/authMiddleware");
 const router = require("express").Router();
 
 // get all patients
+// router.use("/patientlist", checkAuth, patientList);
+
 router.get("/", async (req, res) => {
   try {
     const patientlist = await Patientlist.findAll({});
@@ -14,7 +16,7 @@ router.get("/", async (req, res) => {
 });
 
 // get patient by id
-router.get("/:patientlistId", async (req, res) => {
+router.get("/:patientlistId", checkAuth, async (req, res) => {
   try {
     const patientlist = await Patientlist.findOne({
       where: {
@@ -49,7 +51,7 @@ router.get("/:patientlistId", async (req, res) => {
   }
 });
 
-router.get("/patient/:patientlistId", async (req, res) => {
+router.get("/patient/:patientlistId", checkAuth, async (req, res) => {
   try {
     console.log("reaching the route");
     console.log(req.params);
@@ -140,14 +142,6 @@ router.post("/nursenoteedit", async (req, res) => {
         res.status(200).send("OK");
       });
     }
-    // await Patientlist.create({
-    //   ...req.body,
-    //   urgent: urgent,
-    //   isolationrequired: isolation,
-    //   user_id: req.session.userId,
-    // });
-    // res.status(201).json({ message: "Patient added to list" });
-    // res.redirect("/newpatient");
   } catch (err) {
     res.status(500).json(err);
   }

@@ -55,9 +55,10 @@ router.post("/login", async (req, res) => {
     //add user info to the sessionun
     if (loginResult) {
       req.session.userId = user.dataValues.id;
+      req.session.firstname = user.dataValues.firstname;
       req.session.loggedIn = true;
-      // res.status(201).json({ message: "Successful login" });
-      res.redirect("/patientqueue");
+      res.status(201).json({ message: "Successful login" });
+      // res.redirect("/patientqueue");
     } else {
       res.status(401).json({ message: "Invalid login" });
     }

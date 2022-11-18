@@ -1,17 +1,17 @@
 <ul id="dropdown1" class="dropdown-content">
-  <li><a href="/users/logout">Logout</a></li>
+  <li><a href="/api/logout">Logout</a></li>
 </ul>
 
 <nav>
   <div class="nav-wrapper teal lighten-2 heading">
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <a href="/" class="brand-logo some-left-margin">ER Check in </a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      {{#if user}}
-      <li><a href="/">ER Check in</a></li>
+    <ul class="right hide-on-med-and-down">
 
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Welcome {{user.firstName}}<i
-            class="material-icons right">arrow_drop_down</i></a></li>
+
+      {{#if session.loggedIn}}
+        {{!-- <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li> --}}
+
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Welcome {{session.firstname}}<i class="material-icons right">arrow_drop_down</i></a></li>
       {{else}}
       <li><a href="/login">Login</a></li>
       <li><a href="/register">Register</a></li>
@@ -19,3 +19,5 @@
     </ul>
   </div>
 </nav>
+
+<script src="/js/nav.js"></script>

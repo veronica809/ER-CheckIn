@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Patientlist } = require("../models");
+const { checkAuth } = require("../middlewares/authMiddleware");
 
 // HTML ROUTES
 // GET / - home page
@@ -18,7 +19,7 @@ router.get("/newpatient", (req, res) => {
 router.get("/existingpatient", (req, res) => {
   res.render("existingpatient");
 });
-router.get("/patientqueue", async (req, res) => {
+router.get("/patientqueue", checkAuth, async (req, res) => {
   try {
     const patientlist = await Patientlist.findAll({
       order: [["created_at", "DESC"]],
@@ -29,7 +30,7 @@ router.get("/patientqueue", async (req, res) => {
     res.status(400).json({ err, message: "Not found" });
   }
 });
-router.get("/patientqueue/:patientlistId", async (req, res) => {
+router.get("/patientqueue/:patientlistId", checkAuth, async (req, res) => {
   try {
     console.log("reaching the route");
     console.log(req.params);

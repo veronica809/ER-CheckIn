@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 exports.logout = async (req, res) => {
   try {
     req.session.destroy();
-    res.redirect("/");
+    res.redirect("/login");
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }

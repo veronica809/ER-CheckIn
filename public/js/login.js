@@ -13,8 +13,7 @@ $("#login-form").on("submit", function (event) {
     data: userLogin,
   })
     .done(function (data) {
-      //just log the received data for now
-      $("body").replaceWith(data);
+      window.location.replace("/patientqueue/");
     })
     .fail((err) => console.log(err));
 });
