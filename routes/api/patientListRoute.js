@@ -147,6 +147,47 @@ router.post("/nursenoteedit", async (req, res) => {
   }
 });
 
+router.post("/nursetriage", async (req, res) => {
+  console.log("the edit request is coming as:");
+  console.log(req.body);
+  try {
+    await Patientlist.update(
+      {
+        triaged: req.body.triaged,
+      },
+      {
+        where: {
+          id: req.body.id,
+        },
+      }
+    ).then(function () {
+      res.status(200).send("OK");
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/discharge", async (req, res) => {
+  console.log("the edit request is coming as:");
+  console.log(req.body);
+  try {
+    await Patientlist.update(
+      {
+        discharged: req.body.discharged,
+      },
+      {
+        where: {
+          id: req.body.id,
+        },
+      }
+    ).then(function () {
+      res.status(200).send("OK");
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 //put todo by id
 
 //delete todo by id

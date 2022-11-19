@@ -1,0 +1,23 @@
+<ul id="dropdown1" class="dropdown-content">
+  {{#if session.loggedIn}}
+    <li><a href="/api/logout">Logout</a></li>
+  {{else}}
+    <li><a href="/login">Login</a></li>
+  {{/if}}
+</ul>
+
+<nav>
+  <div class="nav-wrapper teal lighten-2 heading">
+    <a href="/" class="brand-logo margin-left">ER Check in </a>
+    <ul class="right hide-on-med-and-down">
+        {{#if session.loggedIn}}
+          <li><a class="dropdown-trigger margin-right" href="#!" data-target="dropdown1">Welcome {{session.firstname}}<i class="material-icons right">arrow_drop_down</i></a></li>
+        {{else}}
+          <li><a class="dropdown-trigger margin-right" href="#!" data-target="dropdown1">Welcome<i class="material-icons right">arrow_drop_down</i></a></li>
+          {{/if}}
+
+    </ul>
+  </div>
+</nav>
+
+<script src="/js/nav.js"></script>

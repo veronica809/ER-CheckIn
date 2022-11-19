@@ -2,6 +2,8 @@ $(document).ready(function () {
   $(".backButton").click((event) => backButton());
   $(".nursenotesbtn").click((event) => nurseNotesEdit(event));
   $(".nursenotesNormalbtn").click((event) => nurseNotesNormal(event));
+  $(".triagebtn").click((event) => triageFunction(event));
+  $(".dischargebtn").click((event) => dischargeFunction(event));
 
   console.log();
 });
@@ -53,4 +55,36 @@ function nurseNotesNormal(event) {
       window.location.replace("/patientqueue/" + id);
     })
     .fail((err) => console.log(err));
+}
+
+function triageFunction(event) {
+  var id = event.currentTarget.id;
+  axios
+    .post(
+      "/api/patientlist/nursetriage",
+      (data = {
+        id: id,
+        triaged: true,
+      })
+    )
+    .then((res) => {
+      window.location.replace("/patientqueue");
+    })
+    .catch((err) => console.log(err));
+}
+
+function dischargeFunction(event) {
+  var id = event.currentTarget.id;
+  axios
+    .post(
+      "/api/patientlist/discharge",
+      (data = {
+        id: id,
+        discharged: true,
+      })
+    )
+    .then((res) => {
+      window.location.replace("/patientqueue");
+    })
+    .catch((err) => console.log(err));
 }

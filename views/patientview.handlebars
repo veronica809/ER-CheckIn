@@ -2,29 +2,96 @@
 
 <div class="container">
 
-  <a class="waves-effect waves-light btn backButton"><i class="material-icons left">navigate_before</i>Patient Queue</a>
+  <a class="waves-effect waves-light btn-flat backButton"><i class="material-icons left">navigate_before</i>Patient Queue</a>
 
+  <ul class="collection">
+    <li class="collection-item avatar">
+      {{#if isolationrequired}}
+        <img src="/images/mask.png" alt="" class="circle">
+      {{else}}
+        <img src="/images/clipboard.png" alt="" class="circle">
+      {{/if}}
+      <span class="title"><h4>{{firstname}} {{lastname}}</h4></span>
+      <p>Born: {{dob}} <br>
+      </p>
+      {{#if urgent}}
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      {{/if}}
+    </li>
 
-    <ul class="collection with-header">
-        <li class="collection-header"><h4>{{firstname}} {{lastname}}</h4></li>
-        <li class="collection-item">Date of birth: {{dob}}</li>
-        <li class="collection-item">Symptoms: {{symptoms}}</li>
-        {{#if shortbreath}}
-            <li class="collection-item">Short of breath: YES</li>
-        {{else}}
-            <li class="collection-item">Short of breath: NO</li>
-        {{/if}}
-        {{#if chestpain}}
-            <li class="collection-item">Chest Pain: YES</li>
-        {{else}}
-            <li class="collection-item">Chest Pain: NO</li>
-        {{/if}}
-        {{#if covidexposed}}
-            <li class="collection-item">Exposed to Covid: YES</li>
-        {{else}}
-            <li class="collection-item">Exposed to Covid: NO</li>
-        {{/if}}
-    </ul>
+    <div class = "row">
+      <h5>Customer feels:</h5>
+      <div class="col s12">
+              <table>
+        <thead>
+          <tr>
+              <th>Chest Pain</th>
+              <th>Short of Breath</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              {{#if chestpain}}
+              YES
+              {{else}}
+              NO
+              {{/if}}
+            </td>
+            <td>
+              {{#if shortbreath}}
+              YES
+              {{else}}
+              NO  
+              {{/if}}         
+              </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class = "row">
+      <h5>Exposure:</h5>
+      <div class="col s12">
+              <table>
+        <thead>
+          <tr>
+              <th>Covid</th>
+              <th>Influenza</th>
+              <th>Tuberculosis</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              {{#if covidexposed}}
+              YES
+              {{else}}
+              NO
+              {{/if}}
+            </td>
+            <td>
+              {{#if influenzaexposed}}
+              YES
+              {{else}}
+              NO  
+              {{/if}}         
+              </td>
+            <td>
+              {{#if tuberculosisexposed}}
+              YES
+              {{else}}
+              NO
+              {{/if}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
 
 
   {{#if nursenotes}}
@@ -77,6 +144,20 @@
     </form>
   </div>
   {{/if}}
+
+  <div class="row">
+    <div class="col s4 offset-s4">
+      {{#if triaged}}
+        {{#if discharged}}
+          <a class="waves-effect waves-light disabled btn-large" id={{id}}><i class="material-icons right">update</i>Discharged</a>
+        {{else}}
+        <a class="waves-effect waves-light dischargebtn btn-large" id={{id}}><i class="material-icons right">update</i>Discharge</a>
+        {{/if}}
+      {{else}}
+        <a class="waves-effect waves-light triagebtn btn-large" id={{id}}><i class="material-icons right">update</i>Triage</a>
+      {{/if}}
+    </div>
+  </div>
 
 
 </div>

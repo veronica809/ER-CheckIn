@@ -12,12 +12,18 @@
             {{else}}
                <img src="/images/clipboard.png" alt="" class="circle">
             {{/if}}
-            <span class="title">Name: {{this.dataValues.firstname}} {{this.dataValues.lastname}}</span>
+            <span class="title">Name: <b>{{this.dataValues.firstname}} {{this.dataValues.lastname}} </b></span>
             <p>Symptoms: {{this.dataValues.symptoms}} <br>
-               created_at: {{this.dataValues.createdAt}}
+               Signed in: {{this.dataValues.createdAt}}<br>
+               {{#if this.dataValues.triaged}}
+               <b>Triaged:</b> <i class="material-icons">check</i>
+               {{/if}}
+
             </p>
             {{#if dataValues.urgent}}
                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+               </p>
+  
             {{/if}}
 
       </ul>

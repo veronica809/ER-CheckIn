@@ -1,7 +1,12 @@
-<div class="container">
-    {{!-- <button class="signUpBtn waves-effect waves-light btn-large">New Patient</button> --}}
-    <button href="/newpatient" class="newpatient waves-effect waves-light btn-large">New Patient</button>
-    <button href="/existingpatient" class="existingpatient waves-effect waves-light btn-large">Existing Patient</button>
+{{> navbarLanding}}
+
+<div class="container upperpadding">
+    <div class="row">
+        <div class="col offset-s4">
+        <button href="/newpatient" class="newpatient waves-effect waves-light btn-large">New Patient</button>
+        <button href="/existingpatient" class="existingpatient waves-effect waves-light btn-large">Existing Patient</button>
+        </div>
+    </div>
 </div>
 
 <script src="/js/index.js"></script>

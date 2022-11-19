@@ -1,32 +1,37 @@
- <div class = 'container'>
+{{> navbarLanding}}
+ 
+ <div class = 'container upperpadding25'>
   <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate">
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <label>
           <input id="last_name" type="text" class="validate">
           <label for="last_name">Last Name</label>
-          </label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="date-of-birth" type="date" class="validate">
-          <label for="date of birth">Date of birth</label>
+          <input type="text" class="datepicker" id="date-of-birth">
+          <label>Date of Birth
+          {{!-- <input id="date-of-birth" type="date" class="validate"> --}}
+          {{!-- <label for="date of birth">Date of birth</label> --}}
         </div>
         <div class="input-field col s6">
+          <input type="text" class="datepicker" id="date-of-symptoms">
+          <label>Symptoms started on:
+          {{!-- <input id="date-of-symptoms" type="date" class="validate">
+          <label for="date of symptoms">Date when Symptoms Started:</label> --}}
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="input-field col s12">
           <input id="symptoms" type="text" class="validate">
           <label for="symptoms">Symptoms</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="date-of-symptoms" type="date" class="validate">
-          <label for="date of symptoms">Date when Symptoms Started:</label>
         </div>
       </div>
       <div class="row">
@@ -37,10 +42,10 @@
           </label>
         </div>
         <div class="input-field col s6">
-           <label for="influenza">
-          <input type="checkbox" id="influenza" class= "checkboxClass"/>
-         <span>Exposed to Influenza</span>
-         </label>
+          <label for="chestpain">
+          <input type="checkbox" id="chestpain" class= "checkboxClass"/>
+          <span>Chest Pain</span>
+          </label>
         </div>
         <div class="input-field col s6">  
           <label for="tuberculosis">
@@ -51,17 +56,19 @@
         <div class="input-field col s6">
            <label for="breath">
           <input type="checkbox" id="breath" class= "checkboxClass" />
-         <span>Short of breath?</span>
+         <span>Short of breath</span>
          </label>
         </div>
         <div class="input-field col s6">
-          <label for="chestpain">
-          <input type="checkbox" id="chestpain" class= "checkboxClass"/>
-          <span>Chest Pain</span>
-          </label>
+           <label for="influenza">
+          <input type="checkbox" id="influenza" class= "checkboxClass"/>
+         <span>Exposed to Influenza</span>
+         </label>
         </div>
       </div>
-       <button class="patientquestionsubmit waves-effect waves-light btn-large">Submit</button>
+      </div class="col s6">
+        <button class="patientquestionsubmit  waves-effect waves-light btn-large">Submit</button>
+      </div>
     </form>
   </div>
 </div>

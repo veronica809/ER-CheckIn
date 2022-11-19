@@ -4,6 +4,14 @@ var chestpain = false;
 var influenza = false;
 var shortbreath = false;
 
+var options = {
+  yearRange: 60,
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".datepicker");
+  var instances = M.Datepicker.init(elems, options);
+});
 $(document).ready(function () {
   $(".patientquestionsubmit").click((event) => handleSubmit(event));
   $(".checkboxClass").click((event) => checkboxFunction(event));
