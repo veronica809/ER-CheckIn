@@ -5,6 +5,7 @@ const { checkAuth } = require("../middlewares/authMiddleware");
 // HTML ROUTES
 // GET / - home page
 router.get("/", (req, res) => {
+  console.log("reaching root html");
   res.render("index");
 });
 router.get("/login", (req, res) => {
@@ -55,40 +56,13 @@ router.get("/patientqueue/:patientlistId", checkAuth, async (req, res) => {
     });
   }
 });
-router.get("/registereduser", checkAuth, async (req, res) => {
+router.get("/allusers", async (req, res) => {
   try {
-    const user = await User.findAll({
-      order: [["created_at", "DESC"]],
-    });
-    console.log(user);
-    res.render("registereduser", { user });
+    const users = await User.findAll();
+    console.log(users);
+    res.render("registeredusers", { users });
   } catch (err) {
-    res.status(400).json({ err, message: "Not found" });
-  }
-});
-router.get("/registereduser", checkAuth, async (req, res) => {
-  try {
-    console.log("reaching the route");
-    console.log(req.params);
-    const user = await User.findOne({
-      where: {
-        username: req.params.newUserusername,
-      },
-    });
-
-    if (!patientlist) {
-      return res.status(404).json({
-        message: "Patient not found",
-      });
-    }
-    console.log(patientlist.dataValues);
-    res.render("patientview", patientlist.dataValues);
-    // res.status(200).json(patientlist);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).json({
-      message: "Internal server error",
-    });
+    res.status(500).json({ err, message: "Internal server error" });
   }
 });
 

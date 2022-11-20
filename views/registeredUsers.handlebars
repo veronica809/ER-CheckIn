@@ -1,0 +1,16 @@
+   {{> navbar}}
+
+<div class= "container"></div>
+    <h5>Registered Users:</h5>
+    {{#each users}}   
+        <ul class="collection hoverable">
+            <li class="collection-item avatar">
+            <img src="/images/nurseicon.jpg" alt="" class="circle">
+            <span class="title">Title:</span>
+            <span><p>Username: {{this.dataValues.username}}</span><br>
+                Role:<br>
+            </p>
+            </li>
+        </ul>
+    {{/each}}
+</div>
