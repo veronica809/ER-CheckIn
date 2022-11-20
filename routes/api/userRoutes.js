@@ -71,4 +71,9 @@ router.post("/login", async (req, res) => {
 
 router.get("/:profile", getUsersByProfileName);
 
+//Delete user
+router.delete("/delete", (req, res) => {
+  console.log(req.body);
+});
+
 module.exports = router;
