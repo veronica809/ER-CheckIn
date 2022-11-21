@@ -51,12 +51,11 @@ sequelize
   .sync({ force: false })
   .then(() => {
     console.log("DB connected");
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
   })
   .catch((error) => {
     console.log("DB connection failed");
     console.log(error);
   });
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
