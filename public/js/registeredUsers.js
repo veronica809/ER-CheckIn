@@ -7,21 +7,11 @@ $(document).ready(function () {
 function deleteButton(event) {
   var id = event.originalEvent.path[1].id;
   console.log(id);
-
-  var data = {
-    id: id,
-  };
-
+  //DELETE USER
   axios
-    .delete("/api/users/delete", data)
+    .delete("/api/users/delete/" + id)
     .then((res) => {
-      window.location.replace("/newpatient/");
+      window.location.replace("/allusers");
     })
     .catch((err) => console.log(err));
 }
-
-//ok, what needs to happen now is the following:
-// 1. we need to identify what user you are trying to delete
-// 2. once identified, we need to send that to the backend
-// 3. once it reaches a /api route in the backend meant for a delete
-// 4. you need to delete only that user

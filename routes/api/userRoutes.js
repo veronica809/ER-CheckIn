@@ -72,8 +72,15 @@ router.post("/login", async (req, res) => {
 router.get("/:profile", getUsersByProfileName);
 
 //Delete user
-router.delete("/delete", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   console.log(req.body);
+  console.log("the param output is:");
+  console.log(req.params);
+  User.destroy({ where: { id: req.params.id } }).then(function (response) {
+    console.log("the response from sequelize is:");
+    console.log(response);
+    res.status(201).json(response);
+  });
 });
 
 module.exports = router;
