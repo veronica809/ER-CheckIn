@@ -60,7 +60,7 @@ router.get("/allusers", checkAuth, async (req, res) => {
   try {
     const users = await User.findAll();
     console.log(users);
-    res.render("registeredusers", { users });
+    res.render("registeredUsers", { users });
   } catch (err) {
     res.status(500).json({ err, message: "Internal server error" });
   }
