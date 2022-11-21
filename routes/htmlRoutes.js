@@ -56,7 +56,7 @@ router.get("/patientqueue/:patientlistId", checkAuth, async (req, res) => {
     });
   }
 });
-router.get("/allusers", async (req, res) => {
+router.get("/allusers", checkAuth, async (req, res) => {
   try {
     const users = await User.findAll();
     console.log(users);
