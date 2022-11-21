@@ -188,8 +188,4 @@ router.post("/discharge", async (req, res) => {
     res.status(500).json(err);
   }
 });
-//put todo by id
-
-//delete todo by id
-
 module.exports = router;
