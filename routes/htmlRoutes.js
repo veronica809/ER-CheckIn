@@ -13,7 +13,7 @@ router.get("/login", (req, res) => {
 });
 router.get("/register", checkAuth, (req, res) => {
   console.log("Register route is working");
-  res.render("registeruser");
+  res.render("registerUser");
 });
 router.get("/newpatient", (req, res) => {
   res.render("patientQuestions");
