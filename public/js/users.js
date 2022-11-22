@@ -27,8 +27,7 @@ $("#register-user").on("submit", function (event) {
       data: newUser,
     })
       .done(function (data) {
-        //just log the received data for now
-        $("body").replaceWith(data);
+        window.location.replace("/register/");
       })
       .fail((err) => console.log(err));
   } else if (

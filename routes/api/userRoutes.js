@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
     //does the user exist?
     //no? send back  a 404
     if (!user) {
-      return res.status(404).json({ message: "User does not exist" });
+      return res.status(401).json({ message: "User does not exist" });
     }
 
     //is the password correct?
