@@ -11,8 +11,9 @@ router.get("/", (req, res) => {
 router.get("/login", (req, res) => {
   res.render("login");
 });
-router.get("/register", (req, res) => {
-  res.render("registerUser");
+router.get("/register", checkAuth, (req, res) => {
+  console.log("Register route is working");
+  res.render("registeruser");
 });
 router.get("/newpatient", (req, res) => {
   res.render("patientQuestions");
